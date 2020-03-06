@@ -9,6 +9,7 @@ verify_ssl = true
 sympy = "==0.7.5"
 kivy = "*"
 numpy = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.6"

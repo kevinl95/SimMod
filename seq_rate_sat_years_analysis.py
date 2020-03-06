@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 
 from constants import *
@@ -24,7 +23,7 @@ def test_co2_reduction(run_start_year, run_end_year, dt, rcp, c_sens):
             print co2_reduc,
             print end_year
             diffs = (
-                run_simmod(run_start_year, run_end_year, dt, rcp, c_sens, 
+                run_simmod(run_start_year, run_end_year, dt, rcp, c_sens,
                 INIT_YEAR, end_year, co2_reduc, 0, 0)[['year', 't_s']]
             )
             diffs['t_s'] =  diffs['t_s'] - base_run['t_s']
@@ -70,7 +69,7 @@ test_co2_reduction(run_start_year, run_end_year, dt, '8.5', c_sens)
 #co2_reduc = 91 / 100.
 #
 #diffs = (
-#    run_simmod(run_start_year, run_end_year, dt, rcp, c_sens, 
+#    run_simmod(run_start_year, run_end_year, dt, rcp, c_sens,
 #    INIT_YEAR, END_YEAR, co2_reduc, 0, 0)[['year', 't_s']]
 #    )
 #diffs['t_s'] =  diffs['t_s'] - base_run['t_s']
@@ -79,7 +78,3 @@ test_co2_reduction(run_start_year, run_end_year, dt, '8.5', c_sens)
 #print diffs[['year', 't_s']][285:286]
 #print diffs[['year', 't_s']][310:311]
 #print diffs[['year', 't_s']][335:]
-
-
-
-

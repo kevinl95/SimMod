@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 from constants import *
 
@@ -13,12 +12,12 @@ def calc_radiative_forcing(concentrations):
     )
 
     concentrations['ch4_forcing'] = (
-        0.036 * (np.sqrt(concentrations['ch4_ppb']) - np.sqrt(CH4_PPB_1750)) - 
+        0.036 * (np.sqrt(concentrations['ch4_ppb']) - np.sqrt(CH4_PPB_1750)) -
         (func(concentrations['ch4_ppb'], N2O_PPB_1750) - func(CH4_PPB_1750, N2O_PPB_1750))
     ) * CH4_IND_FORCING_SCALAR
 
     concentrations['n2o_forcing'] = (
-        0.12 * (np.sqrt(concentrations['n2o_ppb']) - np.sqrt(N2O_PPB_1750)) - 
+        0.12 * (np.sqrt(concentrations['n2o_ppb']) - np.sqrt(N2O_PPB_1750)) -
         (func(CH4_PPB_1750, concentrations['n2o_ppb']) - func(CH4_PPB_1750, N2O_PPB_1750))
     )
 
@@ -43,7 +42,7 @@ def calc_radiative_forcing(concentrations):
 
     concentrations['rcp_nonghg_forcing'].fillna(0., inplace=True)
     concentrations['total_forcing'] = (
-        concentrations['total_forcing_ghg'] + 
+        concentrations['total_forcing_ghg'] +
         concentrations['rcp_nonghg_forcing']
     )
 
@@ -60,7 +59,7 @@ def func(ch4, n2o):
     IPCC simplified function for calculating CH4/N2O spectral overlap
     """
     val = (
-        0.47 * np.log(1 + 2.01 * 10**-5 * (ch4 * n2o)**0.75 + 
+        0.47 * np.log(1 + 2.01 * 10**-5 * (ch4 * n2o)**0.75 +
         5.31 * 10**-15 * ch4 * (ch4 * n2o)**1.52)
     )
     return val

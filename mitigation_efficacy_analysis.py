@@ -1,4 +1,3 @@
-import pandas as pd
 import numpy as np
 
 from constants import *
@@ -20,7 +19,7 @@ def test_co2_reduction(run_start_year, run_end_year, dt, rcp, c_sens, duration, 
     results = base_run[['year']].copy()
     for t in range(2001,2101):
         diffs = run_simmod(
-            run_start_year, run_end_year, dt, rcp, 
+            run_start_year, run_end_year, dt, rcp,
             c_sens, t, t + duration, c_add, 0, 0
             )[['year', 't_s']]
         diffs['t_s'] =  diffs['t_s'] - base_run['t_s']
@@ -35,7 +34,7 @@ def test_ch4_reduction(run_start_year, run_end_year, dt, rcp, c_sens, duration, 
     results = base_run[['year']].copy()
     for t in range(2001,2101):
         diffs = run_simmod(
-            run_start_year, run_end_year, dt, rcp, 
+            run_start_year, run_end_year, dt, rcp,
             c_sens, t, t + duration, 0, ch4_add, 0
             )[['year', 't_s']]
         diffs['t_s'] =  diffs['t_s'] - base_run['t_s']
@@ -50,7 +49,7 @@ def test_n2o_reduction(run_start_year, run_end_year, dt, rcp, c_sens, duration, 
     results = base_run[['year']].copy()
     for t in range(2001,2101):
         diffs = run_simmod(
-            run_start_year, run_end_year, dt, rcp, 
+            run_start_year, run_end_year, dt, rcp,
             c_sens, t, t + duration, 0, 0, n2o_add
             )[['year', 't_s']]
         diffs['t_s'] =  diffs['t_s'] - base_run['t_s']

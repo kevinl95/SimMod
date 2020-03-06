@@ -1,3 +1,0 @@
-[console_scripts]
-beam_carbon = beam_carbon.beam:main
-
